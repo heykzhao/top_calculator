@@ -1,0 +1,116 @@
+.grid-container {
+    display: grid;
+    height: 700px;
+    width: 414px;
+}
+.top-bar {
+    background-color: #242426;
+    display: flex;
+    align-items: center;
+    grid-column: 1 / span 4;
+    grid-row: 1;
+    height: 20px;
+    padding: 6px;
+    border-top-left-radius: 13%;
+    border-top-right-radius: 13%;
+}
+.red-dot {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    border-radius: 50%;
+    height: 12.6px;
+    width: 15px;
+    padding-bottom: 2.4px;
+    background-color: #ED6A5E;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #8E1B12;
+}
+.yellow-dot {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    border-radius: 50%;
+    height: 12.6px;
+    width: 15px;
+    padding-bottom: 2.4px;
+    background-color: #F5BF4F;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #A97229;
+}
+.green-dot {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    border-radius: 50%;
+    height: 12.6px;
+    width: 15px;
+    background-color: #62C554;
+    padding-bottom: 2.4px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #2D671B;
+}
+.display-area {
+    grid-column: 1 / span 4;
+    grid-row: 2;
+    background-color: #242426;
+    height: 100%;
+}
+.special-button {
+    background-color: #39393C;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    border-top: solid;
+    border-right: solid;
+    border-width: 1px;
+    border-color: black;
+}
+.numbers-button {
+    background-color: #5A5A5B;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    border-top: solid;
+    border-right: solid;
+    border-width: 1px;
+    border-color: black;
+}
+.zero-button {
+    grid-column: 1 / span 2;
+    grid-row: 7;
+    background-color: #5A5A5B;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    border-top: solid;
+    border-right: solid;
+    border-width: 1px;
+    border-color: black;
+    border-bottom-left-radius: 13%;
+}
+.operator-button {
+    background-color: #F2A33C;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    border-top: solid;
+    border-right: solid;
+    border-width: 1px;
+    border-color: black;
+}
+.equals-button {
+    background-color: #F2A33C;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    border-top: solid;
+    border-right: solid;
+    border-width: 1px;
+    border-color: black;
+    border-bottom-right-radius: 13%;
+}
+
