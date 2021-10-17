@@ -1,18 +1,18 @@
 .grid-container {
     display: grid;
-    height: 700px;
+    height: 540px;
     width: 414px;
+    grid-template-columns: 103.5px 103.5px 103.5px 103.5px;
 }
 .top-bar {
     background-color: #242426;
     display: flex;
     align-items: center;
-    grid-column: 1 / span 4;
-    grid-row: 1;
     height: 20px;
     padding: 6px;
-    border-top-left-radius: 13%;
-    border-top-right-radius: 13%;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    width: 402px;
 }
 .red-dot {
     display: flex;
@@ -45,7 +45,7 @@
     justify-content:space-evenly;
     align-items: center;
     border-radius: 50%;
-    height: 12.6px;
+    height: 12.6px; 
     width: 15px;
     background-color: #62C554;
     padding-bottom: 2.4px;
@@ -54,63 +54,84 @@
     color: #2D671B;
 }
 .display-area {
-    grid-column: 1 / span 4;
-    grid-row: 2;
     background-color: #242426;
-    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 15px;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 80px;
+    font-weight: lighter;
+    width: 399px;
 }
 .special-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #39393C;
     color: white;
     font-family: Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     border-top: solid;
     border-right: solid;
     border-width: 1px;
     border-color: black;
 }
 .numbers-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #5A5A5B;
     color: white;
     font-family: Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     border-top: solid;
     border-right: solid;
     border-width: 1px;
     border-color: black;
 }
 .zero-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     grid-column: 1 / span 2;
-    grid-row: 7;
+    grid-row: 5;
     background-color: #5A5A5B;
     color: white;
     font-family: Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     border-top: solid;
     border-right: solid;
     border-width: 1px;
     border-color: black;
-    border-bottom-left-radius: 13%;
+    border-bottom-left-radius: 13px;
 }
 .operator-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #F2A33C;
     color: white;
     font-family: Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     border-top: solid;
     border-right: solid;
     border-width: 1px;
     border-color: black;
 }
 .equals-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #F2A33C;
     color: white;
     font-family: Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     border-top: solid;
     border-right: solid;
     border-width: 1px;
     border-color: black;
-    border-bottom-right-radius: 13%;
+    border-bottom-right-radius: 13px;
 }
 
