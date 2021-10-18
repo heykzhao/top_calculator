@@ -1,3 +1,4 @@
+// Calculator functions
 function add(a, b) {
     return total = a + b;
 };
@@ -30,3 +31,25 @@ function operate(operator, a, b) {
             return null;
     }
 };
+
+let displayValue;
+const displayAreaText = document.querySelector('.display-area');
+displayAreaText.innerText = 'test';
+
+// Hover effect over colored dots
+const topBarDots = document.querySelectorAll('.dots');
+const greenDot = document.querySelector('.green-dot');
+const yellowDot = document.querySelector('.yellow-dot');
+const redDot = document.querySelector('.red-dot');
+topBarDots.forEach((dot => {
+    dot.addEventListener('mouseover', e => {
+        greenDot.innerText = '+';
+        yellowDot.innerText = '−';
+        redDot.innerText = '×';
+    })
+    dot.addEventListener('mouseout', e => {
+        greenDot.innerText = '';
+        yellowDot.innerText = '';
+        redDot.innerText = '';
+    });
+}))
