@@ -32,34 +32,89 @@ function operate(operator, a, b) {
     }
 };
 
-// Storing display value when number is pressed
-let displayValue;
+// Establish all variables needed
+let currentNumber, storedNumber, displayValueString; 
+let displayValueArray = [];
 const displayAreaText = document.querySelector('.display-area');
-displayAreaText.innerText = 'test';
+const clearButton = document.querySelector('.clear');
+const plusNegativeButton = document.querySelector('.plus-negative');
+const percentageButton = document.querySelector('.percentage');
+const decimalButton = document.querySelector('.decimal');
 
-// Hover effect over colored dots
-const topBarDots = document.querySelectorAll('.dots');
-const greenDot = document.querySelector('.green-dot');
-const yellowDot = document.querySelector('.yellow-dot');
-const redDot = document.querySelector('.red-dot');
-topBarDots.forEach((dot => {
-    dot.addEventListener('mouseover', e => {
-        greenDot.innerText = '+';
-        yellowDot.innerText = '−';
-        redDot.innerText = '×';
-    })
-    dot.addEventListener('mouseout', e => {
-        greenDot.innerText = '';
-        yellowDot.innerText = '';
-        redDot.innerText = '';
-    });
-}))
 
-// Changing opacity on button click
 const specialButtons = document.querySelectorAll('.special-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const numberButtons = document.querySelectorAll('.numbers-button');
 
+const topBarDots = document.querySelectorAll('.dots');
+const greenDot = document.querySelector('.green-dot');
+const yellowDot = document.querySelector('.yellow-dot');
+const redDot = document.querySelector('.red-dot');
+
+// Storing display value when number is pressed
+numberButtons.forEach((button => {
+    button.addEventListener('mousedown', addNumber);
+}));
+
+plusNegativeButton.addEventListener('mousedown',plusNegativive)
+percentageButton.addEventListener('mousedown',percentagize)
+
+function addNumber(e) {
+    let numberPressed = e.target.innerText;
+    displayValueArray.push(numberPressed);
+    displayValueString = displayValueArray.join('');
+    currentNumber = Number(displayValueArray.join(''));
+
+    if (displayValueArray[0] == '.') {
+        displayAreaText.innerText = '0' + displayValueString;
+    } else {
+        displayAreaText.innerText = displayValueString;
+    }
+
+    console.log(displayValueArray);
+    console.log(currentNumber);
+};
+function plusNegativive(e) {
+    if (currentNumber == 0) {
+        return
+    } else {
+        currentNumber = currentNumber * -1;
+        displayValueArray = currentNumber.toString().split('');
+        displayValueString = displayValueArray.join('');
+        displayAreaText.innerText = displayValueString;
+    }
+    console.log(displayValueArray);
+    console.log(currentNumber);
+};
+function percentagize(e) {
+    if (currentNumber == 0) {
+        return
+    } else {
+        currentNumber = currentNumber / 100;
+        storedNumber = currentNumber;
+            displayValueArray = storedNumber.toString().split('');
+            displayValueString = displayValueArray.join('');
+            if (displayValueArray[0] == '.') {
+                displayAreaText.innerText = '0' + displayValueString;
+            } else {
+                displayAreaText.innerText = displayValueString;
+            }
+    }
+};
+function allClear(e) {
+    currentNumber = 0;
+    storedNumber = 0;
+    displayValueArray = [];
+    displayAreaText.innerText = 0;
+};
+function clearEntry(e) {
+    currentNumber = 0;
+    displayValueArray = [];
+    displayAreaText.innerText = 0;
+};
+
+
+// Changing opacity on button click
 specialButtons.forEach((button => {
     button.addEventListener('mousedown', specialButtonPressed);
     button.addEventListener('mouseup', specialButtonOriginal);
@@ -91,3 +146,17 @@ function numberButtonPressed(e) {
 function numberButtonOriginal(e) {
     e.target.style.backgroundColor = '#5A5A5B';
 };
+
+// Hover effect over colored dots
+topBarDots.forEach((dot => {
+    dot.addEventListener('mouseover', e => {
+        greenDot.innerText = '+';
+        yellowDot.innerText = '−';
+        redDot.innerText = '×';
+    })
+    dot.addEventListener('mouseout', e => {
+        greenDot.innerText = '';
+        yellowDot.innerText = '';
+        redDot.innerText = '';
+    });
+}))
