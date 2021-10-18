@@ -32,6 +32,7 @@ function operate(operator, a, b) {
     }
 };
 
+// Storing display value when number is pressed
 let displayValue;
 const displayAreaText = document.querySelector('.display-area');
 displayAreaText.innerText = 'test';
@@ -53,3 +54,40 @@ topBarDots.forEach((dot => {
         redDot.innerText = '';
     });
 }))
+
+// Changing opacity on button click
+const specialButtons = document.querySelectorAll('.special-button');
+const operatorButtons = document.querySelectorAll('.operator-button');
+const numberButtons = document.querySelectorAll('.numbers-button');
+
+specialButtons.forEach((button => {
+    button.addEventListener('mousedown', specialButtonPressed);
+    button.addEventListener('mouseup', specialButtonOriginal);
+}));
+operatorButtons.forEach((button => {
+    button.addEventListener('mousedown', operatorButtonPressed);
+    button.addEventListener('mouseup', operatorButtonOriginal);
+}));
+numberButtons.forEach((button => {
+    button.addEventListener('mousedown', numberButtonPressed);
+    button.addEventListener('mouseup', numberButtonOriginal);
+}));
+
+function specialButtonPressed(e) {
+    e.target.style.backgroundColor = '#5A5A5B';
+};
+function specialButtonOriginal(e) {
+    e.target.style.backgroundColor = '#39393C';
+};
+function operatorButtonPressed(e) {
+    e.target.style.backgroundColor = '#C0812E';
+};
+function operatorButtonOriginal(e) {
+    e.target.style.backgroundColor = '#F2A33C';
+};
+function numberButtonPressed(e) {
+    e.target.style.backgroundColor = '#9D9D9D';
+};
+function numberButtonOriginal(e) {
+    e.target.style.backgroundColor = '#5A5A5B';
+};
