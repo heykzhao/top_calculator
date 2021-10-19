@@ -95,6 +95,11 @@ function operateNumbers(e) {
         displayAreaText.innerText = storedNumber.toString();
         displayValueArray = [];
     }
+
+    displayAreaText.style.color = '#242426';
+    setTimeout(function() {
+        displayAreaText.style.color = 'white';
+    }, 50)
 };
 function addNumber(e) {
     let numberPressed = e.target.innerText;
