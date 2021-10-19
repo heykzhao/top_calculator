@@ -36,7 +36,7 @@ function operate(operator, a, b) {
 let currentOperator, displayValueString, calculatedNumber; 
 let storedNumber, currentNumber = 0;
 let displayValueArray = [];
-const displayAreaText = document.querySelector('.display-area');
+const displayAreaText = document.querySelector('#wrap');
 const clearButton = document.querySelector('.clear');
 const plusNegativeButton = document.querySelector('.plus-negative');
 const percentageButton = document.querySelector('.percentage');
@@ -53,17 +53,19 @@ const yellowDot = document.querySelector('.yellow-dot');
 const redDot = document.querySelector('.red-dot');
 
 // Storing display value when number is pressed
-operatorButtons.forEach((button => {button.addEventListener('mousedown', operateNumbers);}));
-numberButtons.forEach((button => {button.addEventListener('mousedown', addNumber);}));
-plusNegativeButton.addEventListener('mousedown',plusNegativive)
-percentageButton.addEventListener('mousedown',percentagize)
+operatorButtons.forEach((button => {button.addEventListener('click', operateNumbers);}));
+numberButtons.forEach((button => {button.addEventListener('click', addNumber);}));
+plusNegativeButton.addEventListener('click',plusNegativive)
+percentageButton.addEventListener('click',percentagize)
+clearButton.addEventListener('click', clearEntry);
 
-if (storedNumber !== 0 && currentNumber !== 0) {
-    clearButton.innerText = 'CE';
-    clearButton.addEventListener('mousedown', clearEntry);
-} else {
-    clearButton.addEventListener('mousedown', allClear);
-}
+operatorButtons.forEach((button => {button.addEventListener('click', fontSizeAdjust);}));
+numberButtons.forEach((button => {button.addEventListener('click', fontSizeAdjust);}));
+plusNegativeButton.addEventListener('click',fontSizeAdjust)
+percentageButton.addEventListener('click',fontSizeAdjust)
+clearButton.addEventListener('click', fontSizeAdjust);
+
+clearButton.innerText = 'AC';
 
 function operateNumbers(e) {
     let operatorPressed = e.target.classList;
@@ -96,7 +98,7 @@ function operateNumbers(e) {
 };
 function addNumber(e) {
     let numberPressed = e.target.innerText;
-    console.log(e);
+    clearButton.innerText = 'CE';
     if ((currentNumber == undefined || currentNumber == 0) && numberPressed == '0' && displayValueArray.includes('.') == false) {
         return;
     } else if (displayValueArray.includes('.') == true && numberPressed == '.') {
@@ -138,50 +140,49 @@ function percentagize(e) {
             }
     }
 };
-function allClear(e) {
-    currentNumber = undefined;
-    storedNumber = undefined;
-    displayValueArray = [];
-    displayAreaText.innerText = 0;
-};
 function clearEntry(e) {
-    currentNumber = undefined;
-    displayValueArray = [];
-    displayAreaText.innerText = 0;
+    if (currentNumber !== 0) {
+        storedNumber = 0;
+        displayValueArray = [];
+        displayAreaText.innerText = 0;
+        clearButton.innerText = 'AC';
+    } else {
+        currentNumber = 0;
+        storedNumber = 0;
+        displayValueArray = [];
+        displayAreaText.innerText = 0;
+    }
 };
 
 
 // Changing opacity on button click
 specialButtons.forEach((button => {
-    button.addEventListener('mousedown', specialButtonPressed);
-    button.addEventListener('mouseup', specialButtonOriginal);
+    button.addEventListener('click', specialButtonPressed);
 }));
 operatorButtons.forEach((button => {
-    button.addEventListener('mousedown', operatorButtonPressed);
-    button.addEventListener('mouseup', operatorButtonOriginal);
+    button.addEventListener('click', operatorButtonPressed);
 }));
 numberButtons.forEach((button => {
-    button.addEventListener('mousedown', numberButtonPressed);
-    button.addEventListener('mouseup', numberButtonOriginal);
+    button.addEventListener('click', numberButtonPressed);
 }));
 
 function specialButtonPressed(e) {
     e.target.style.backgroundColor = '#5A5A5B';
-};
-function specialButtonOriginal(e) {
-    e.target.style.backgroundColor = '#39393C';
+    setTimeout(function() {
+        e.target.style.backgroundColor = '#39393C';
+    }, 50)
 };
 function operatorButtonPressed(e) {
     e.target.style.backgroundColor = '#C0812E';
-};
-function operatorButtonOriginal(e) {
-    e.target.style.backgroundColor = '#F2A33C';
+    setTimeout(function() {
+        e.target.style.backgroundColor = '#F2A33C';
+    }, 50)
 };
 function numberButtonPressed(e) {
     e.target.style.backgroundColor = '#9D9D9D';
-};
-function numberButtonOriginal(e) {
-    e.target.style.backgroundColor = '#5A5A5B';
+    setTimeout(function() {
+        e.target.style.backgroundColor = '#5A5A5B';
+    }, 50)
 };
 
 // Hover effect over colored dots
@@ -199,7 +200,82 @@ topBarDots.forEach((dot => {
 }))
 
 // Adding keyboard shortcuts
-function keyboardShortcut(e) {
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-  }
+document.addEventListener('keydown', function(e) {
+	let key = e.key
+	switch (key) {
+		case '1':
+            document.querySelector('.number-1').click();
+			break;
+		case '2':
+            document.querySelector('.number-2').click();
+			break;
+		case '3':
+            document.querySelector('.number-3').click();
+			break;
+		case '4':
+            document.querySelector('.number-4').click();
+			break;
+		case '5':
+            document.querySelector('.number-5').click();
+			break;
+		case '6':
+            document.querySelector('.number-6').click();
+			break;
+		case '7':
+            document.querySelector('.number-7').click();
+			break;
+		case '8':
+            document.querySelector('.number-8').click();
+			break;
+		case '9':
+            document.querySelector('.number-9').click();
+			break;
+		case '0':
+            document.querySelector('.number-0').click();
+			break;
+		case '.':
+            document.querySelector('.decimal').click();
+            break;
+		case 'c':
+            document.querySelector('.clear').click();
+            break;
+		case 'Escape':
+            document.querySelector('.clear').click();
+            break;
+		case '%':
+            document.querySelector('.percentage').click();
+            break;
+		case '/':
+            document.querySelector('.divide').click();
+            break;
+		case '*':
+            document.querySelector('.multiply').click();
+            break;
+		case '-':
+            document.querySelector('.minus').click();
+            break;
+		case '+':
+            document.querySelector('.add').click();
+            break;
+		case '=':
+            document.querySelector('.equals').click();
+            break;
+		case 'Enter':
+            document.querySelector('.equals').click();
+            break;
+	}
+});
 
+// Adjust font size of display area based on string length
+let fit = document.getElementById("fit"),
+    wrap = document.getElementById("wrap"),
+    step = 0.5,
+    currentSize;
+
+function fontSizeAdjust(e) {
+    wrap.style.fontSize = '80px';
+    while (fit.offsetWidth < wrap.offsetWidth+50) {
+        currentSize = parseFloat(window.getComputedStyle(wrap, null).getPropertyValue('font-size'));
+        wrap.style.fontSize = (currentSize - step) + 'px';
+    }
+};

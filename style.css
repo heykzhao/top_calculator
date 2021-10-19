@@ -69,13 +69,15 @@
     background-color: #242426;
     display: flex;
     align-items: center;
+    height: 92px;
     justify-content: right;
     padding-right: 15px;
+    padding-left: 15px;
     color: white;
     font-family: Helvetica, sans-serif;
     font-size: 80px;
     font-weight: lighter;
-    width: 399px;
+    width: 384px;
     opacity: 82%;
 }
 .special-button {
