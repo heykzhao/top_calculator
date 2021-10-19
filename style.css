@@ -21,6 +21,10 @@
     border-top-right-radius: 13px;
     width: 402px;
     opacity: 82%;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 .red-dot {
     display: flex;
@@ -87,6 +91,10 @@
     border-width: 1px;
     border-color: black;
     opacity: 82%;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 .numbers-button {
     display: flex;
@@ -101,6 +109,10 @@
     border-width: 1px;
     border-color: black;
     opacity: 82%;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 .zero-button {
     display: flex;
@@ -118,6 +130,10 @@
     border-color: black;
     border-bottom-left-radius: 13px;
     opacity: 82%;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 .operator-button {
     display: flex;
@@ -132,6 +148,10 @@
     border-width: 1px;
     border-color: black;
     opacity: 82%;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 .equals-button {
     display: flex;
@@ -147,5 +167,9 @@
     border-color: black;
     border-bottom-right-radius: 13px;
     opacity: 82%;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 

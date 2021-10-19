@@ -53,7 +53,7 @@ const redDot = document.querySelector('.red-dot');
 
 // Storing display value when number is pressed
 numberButtons.forEach((button => {
-    button.addEventListener('mousedown', addNumber);
+    button.addEventListener('mousedown', addNumber);3
 }));
 
 plusNegativeButton.addEventListener('mousedown',plusNegativive)
@@ -61,9 +61,15 @@ percentageButton.addEventListener('mousedown',percentagize)
 
 function addNumber(e) {
     let numberPressed = e.target.innerText;
-    displayValueArray.push(numberPressed);
-    displayValueString = displayValueArray.join('');
-    currentNumber = Number(displayValueArray.join(''));
+    if ((currentNumber == undefined || currentNumber == 0) && numberPressed == '0' && displayValueArray.includes('.') == false) {
+        return;
+    } else if (displayValueArray.includes('.') == true && numberPressed == '.') {
+        return;
+    } else {
+        displayValueArray.push(numberPressed);
+        displayValueString = displayValueArray.join('');
+        currentNumber = Number(displayValueArray.join(''));
+    };
 
     if (displayValueArray[0] == '.') {
         displayAreaText.innerText = '0' + displayValueString;
@@ -72,10 +78,11 @@ function addNumber(e) {
     }
 
     console.log(displayValueArray);
+    console.log(displayValueString);
     console.log(currentNumber);
 };
 function plusNegativive(e) {
-    if (currentNumber == 0) {
+    if (currentNumber == 0 || currentNumber == undefined) {
         return
     } else {
         currentNumber = currentNumber * -1;
@@ -87,7 +94,7 @@ function plusNegativive(e) {
     console.log(currentNumber);
 };
 function percentagize(e) {
-    if (currentNumber == 0) {
+    if (currentNumber == 0 || currentNumber == undefined) {
         return
     } else {
         currentNumber = currentNumber / 100;
