@@ -1,15 +1,15 @@
 // Calculator functions
 function add(a, b) {
-    return total = a + b;
+    return a + b;
 };
 function subtract(a, b) {
-    return total = a - b;
+    return a - b;
 };
 function multiply(a, b) {
-    return total = a * b;
+    return a * b;
 };
 function divide(a, b) {
-    return total = a / b;
+    return a / b;
 };
 function operate(operator, a, b) {
     a = Number(a);
@@ -33,7 +33,8 @@ function operate(operator, a, b) {
 };
 
 // Establish all variables needed
-let currentNumber, storedNumber, displayValueString; 
+let currentOperator, displayValueString, calculatedNumber; 
+let storedNumber, currentNumber = 0;
 let displayValueArray = [];
 const displayAreaText = document.querySelector('.display-area');
 const clearButton = document.querySelector('.clear');
@@ -52,15 +53,50 @@ const yellowDot = document.querySelector('.yellow-dot');
 const redDot = document.querySelector('.red-dot');
 
 // Storing display value when number is pressed
-numberButtons.forEach((button => {
-    button.addEventListener('mousedown', addNumber);3
-}));
-
+operatorButtons.forEach((button => {button.addEventListener('mousedown', operateNumbers);}));
+numberButtons.forEach((button => {button.addEventListener('mousedown', addNumber);}));
 plusNegativeButton.addEventListener('mousedown',plusNegativive)
 percentageButton.addEventListener('mousedown',percentagize)
 
+if (storedNumber !== 0 && currentNumber !== 0) {
+    clearButton.innerText = 'CE';
+    clearButton.addEventListener('mousedown', clearEntry);
+} else {
+    clearButton.addEventListener('mousedown', allClear);
+}
+
+function operateNumbers(e) {
+    let operatorPressed = e.target.classList;
+    if (operatorPressed.contains('add') == true) {
+        currentOperator = add;
+        storedNumber = currentNumber;
+        displayAreaText.innerText = storedNumber.toString();
+        displayValueArray = [];
+    } else if (operatorPressed.contains('minus') == true) {
+        currentOperator = subtract;
+        storedNumber = currentNumber;
+        displayAreaText.innerText = storedNumber.toString();
+        displayValueArray = [];
+    } else if (operatorPressed.contains('multiply') == true) {
+        currentOperator = multiply;
+        storedNumber = currentNumber;
+        displayAreaText.innerText = storedNumber.toString();
+        displayValueArray = [];
+    } else if (operatorPressed.contains('divide') == true) {
+        currentOperator = divide;
+        storedNumber = currentNumber;
+        displayAreaText.innerText = storedNumber.toString();
+        displayValueArray = [];
+    } else if (operatorPressed.contains('equals') == true) {
+        storedNumber = operate(currentOperator, storedNumber, currentNumber);
+        currentNumber = storedNumber;
+        displayAreaText.innerText = storedNumber.toString();
+        displayValueArray = [];
+    }
+};
 function addNumber(e) {
     let numberPressed = e.target.innerText;
+    console.log(e);
     if ((currentNumber == undefined || currentNumber == 0) && numberPressed == '0' && displayValueArray.includes('.') == false) {
         return;
     } else if (displayValueArray.includes('.') == true && numberPressed == '.') {
@@ -76,10 +112,6 @@ function addNumber(e) {
     } else {
         displayAreaText.innerText = displayValueString;
     }
-
-    console.log(displayValueArray);
-    console.log(displayValueString);
-    console.log(currentNumber);
 };
 function plusNegativive(e) {
     if (currentNumber == 0 || currentNumber == undefined) {
@@ -90,8 +122,6 @@ function plusNegativive(e) {
         displayValueString = displayValueArray.join('');
         displayAreaText.innerText = displayValueString;
     }
-    console.log(displayValueArray);
-    console.log(currentNumber);
 };
 function percentagize(e) {
     if (currentNumber == 0 || currentNumber == undefined) {
@@ -109,13 +139,13 @@ function percentagize(e) {
     }
 };
 function allClear(e) {
-    currentNumber = 0;
-    storedNumber = 0;
+    currentNumber = undefined;
+    storedNumber = undefined;
     displayValueArray = [];
     displayAreaText.innerText = 0;
 };
 function clearEntry(e) {
-    currentNumber = 0;
+    currentNumber = undefined;
     displayValueArray = [];
     displayAreaText.innerText = 0;
 };
@@ -167,3 +197,9 @@ topBarDots.forEach((dot => {
         redDot.innerText = '';
     });
 }))
+
+// Adding keyboard shortcuts
+function keyboardShortcut(e) {
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  }
+
