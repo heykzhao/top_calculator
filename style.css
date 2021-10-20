@@ -1,10 +1,38 @@
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0px;
+    box-sizing: border-box;
+    background-image: url('images/Animated\ Shape.svg');
+}
 .calculator {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
 }
+@media only screen and (max-width: 600px) {
+    .calculator {
+        -webkit-transform:scale(0.6);
+        -moz-transform:scale(0.6);
+        -ms-transform:scale(0.6);
+        transform:scale(0.6);    
+    }
+  }
 .grid-container {
     display: grid;
     height: 540px;
@@ -174,4 +202,35 @@
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 }
+.footer {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+}
+.nameplate {
+    display: flex;
+    background-color: white;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: black;
+    border-radius: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
+.copyright {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+.github-logo {
+    display: inline-block;
+    margin-left: 10px;
+    height: 25px;
+}
