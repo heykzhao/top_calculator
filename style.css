@@ -16,7 +16,7 @@ body {
     overflow-y: hidden;
     margin: 0px;
     box-sizing: border-box;
-    background-image: url('.images/Animated\ Shape.svg');
+    background-image: url(.images/Animated\ Shape.svg);
 }
 .calculator {
     display: flex;
